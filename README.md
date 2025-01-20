@@ -26,12 +26,12 @@ O projeto consiste em uma aplicação web que permite aos usuários gerenciar um
 
 1. Clone o repositório:
    ```bash
-   git clone <url_do_repositorio>
+   git clone https://github.com/m1ch3lr4m0s/CRUD_nodeJS.git
    ```
 
 2. Navegue até o diretório do projeto:
    ```bash
-   cd nome_do_projeto
+   cd CRUD_nodeJS
    ```
 
 3. Instale as dependências:
