@@ -4,30 +4,42 @@ const handlebars = require("express-handlebars");
 const path = require("path");
 const app = express();
 const PORT = 3000;
+const Contato = require("./models/Contato");
 
-app.engine("handlebars", handlebars.engine());
+// Configuração do handlebars
+const exphbs = handlebars.create({
+    partialsDir: ["views/partials"]
+});
+app.engine("handlebars", exphbs.engine);
 app.set("view engine", "handlebars");
 app.set("views", path.join(__dirname, "views"));
+// Configuração do express
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static("public"));
 
-app.get("/", (req, res) => {
-  res.render("home");
-});
-
-// Função para iniciar o servidor
-async function startServer() {
+// Configuração das rotas
+app.get("/", async (req, res) => { 
     try {
-        // Testar a conexão com o banco de dados
-        await db.connect();
-        console.log('Conexão com o banco de dados estabelecida.');
-
-        // Iniciar o servidor Express
-        app.listen(PORT, () => {
-            console.log(`Servidor rodando na porta ${PORT}`);
-        });
-    } catch (error) {
-        console.error('Erro ao conectar ao banco de dados:', error);
+        const contatos = await Contato.findAll({ raw: true });
+        res.render("home", { contatos });
+    } catch (err) {
+        console.error("Erro ao buscar contatos:", err);
+        res.status(500).send("Erro ao buscar contatos");
     }
+});
+ 
+async function teste(){
+    const contatos = await Contato.findAll({raw: true});
+    console.log(contatos);
 }
 
-// Chamar a função para iniciar o servidor
-startServer();
+teste();
+
+ db.sync()
+ .then(() => {
+    app.listen(PORT);
+ })
+ .catch((err) => {
+    console.log(err);
+ })

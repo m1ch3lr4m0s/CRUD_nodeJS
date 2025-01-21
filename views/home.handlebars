@@ -1,2 +1,22 @@
-<h1>Home</h1>
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
+  <div class="container">
+       <h1>Lista de Contatos</h1>
+       <table>
+           <thead>
+               <tr>
+                   <th>Nome</th>
+                   <th>Email</th>
+                   <th>Telefone</th>
+               </tr>
+           </thead>
+           <tbody>
+            {{!-- Lê o array de contatos --}}
+               {{#with contatos}}
+                   <tr>
+                       <td>{{this.nome}}</td>
+                       <td>{{this.email}}</td>
+                       <td>{{this.telefone}}</td>
+                   </tr>
+               {{/with}}
+           </tbody>
+       </table>
+   </div>
