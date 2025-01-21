@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js 3000"
+   
+    "start": "nodemon index.js 3000",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
@@ -17,5 +18,8 @@
     "nodemon": "^3.1.9",
     "pg-promise": "^11.10.2",
     "sequelize": "^6.37.5"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
   }
 }
