@@ -4,9 +4,12 @@ Este projeto é um CRUD (Create, Read, Update, Delete) de uma lista de contatos,
 
 - **Node.js**: Ambiente de execução JavaScript no lado do servidor.
 - **Express.js**: Framework web para Node.js que facilita a criação de aplicações web.
-- **PostgreSQL**: Sistema de gerenciamento de banco de dados relacional utilizado para armazenar os dados dos contatos.
 - **Handlebars**: Motor de templates que permite a criação de páginas HTML dinâmicas.
 
+ 
+![Captura de tela 2025-01-21 161720](https://github.com/user-attachments/assets/6f6477a5-9ce0-4acb-bd0d-23b40d0d5959)
+
+---
 ## Descrição do Projeto
 
 O projeto consiste em uma aplicação web que permite aos usuários gerenciar uma lista de contatos. A interface do usuário é minimalista, focando na simplicidade e na facilidade de uso. Os usuários podem adicionar novos contatos, visualizar a lista de contatos existentes, editar informações de contatos e remover contatos indesejados.
