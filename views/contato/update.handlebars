@@ -1,0 +1,9 @@
+{{#with contato}}
+<h1>Editar Contato {{nome}}</h1>
+<form action="/updateSave/{{id}}" method="post">
+    <input type="text" name="nome" placeholder="Nome" value="{{nome}}">
+    <input type="email" name="email" placeholder="Email" value="{{email}}">
+    <input type="text" name="telefone" placeholder="Telefone" value="{{this.telefone}}">
+    <button type="submit">Atualizar</button>
+</form>
+{{/with}}                   

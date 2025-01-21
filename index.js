@@ -5,6 +5,8 @@ const path = require("path");
 const app = express();
 const PORT = 3000;
 const Contato = require("./models/Contato");
+const contatoRouter = require("./routes/contatoRouter");
+const ContatoController = require("./controllers/ContatoController");
 
 // Configuração do handlebars
 const exphbs = handlebars.create({
@@ -20,27 +22,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 // Configuração das rotas
-app.get("/", async (req, res) => { 
-    try {
-        const contatos = await Contato.findAll({ raw: true });
-        res.render("home", { contatos });
-    } catch (err) {
-        console.error("Erro ao buscar contatos:", err);
-        res.status(500).send("Erro ao buscar contatos");
-    }
-});
- 
-async function teste(){
-    const contatos = await Contato.findAll({raw: true});
-    console.log(contatos);
-}
+app.use("/", contatoRouter);
 
-teste();
-
- db.sync()
- .then(() => {
-    app.listen(PORT);
- })
- .catch((err) => {
-    console.log(err);
- })
+// Sincroniza o banco de dados
+db.sync()
+    .then(() => {
+        app.listen(PORT);
+    })
+    .catch((err) => {
+        console.log(err);
+    })

@@ -1,22 +1,33 @@
-  <div class="container">
-       <h1>Lista de Contatos</h1>
-       <table class="table">
-           <thead>
-               <tr>
-                   <th>Nome</th>
-                   <th>Email</th>
-                   <th>Telefone</th>
-               </tr>
-           </thead>
-           <tbody>
-            {{!-- Lê o array de contatos --}}
-               {{#each contatos}}
-                   <tr>
-                       <td>{{this.nome}}</td>
-                       <td>{{this.email}}</td>
-                       <td>{{this.telefone}}</td>
-                   </tr>
-               {{/each}}
-           </tbody>
-       </table>
-   </div>
+
+   
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+             <h1 class="navbar-brand">Lista de Contatos</h1>
+             <a href="/create" class="btn btn-primary">Adicionar Contato</a>
+        </div>
+    </nav>
+    <div class="table-responsive" style="height: 500px; overflow-y: auto;">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Telefone</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{!-- Lê o array de contatos --}}
+                {{#each contatos}}
+                    <tr>
+                        <td>{{this.nome}}</td>
+                        <td>{{this.email}}</td>
+                        <td>{{this.telefone}}</td>
+                        <td>
+                            <a href="/edit/{{this.id}}" class="btn btn-primary">Editar</a>
+                            <a href="/delete/{{this.id}}" class="btn btn-danger">Excluir</a>
+                        </td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
