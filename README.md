@@ -30,8 +30,8 @@ O projeto consiste em uma aplicação web que permite aos usuários gerenciar um
 Clone o repositório do seu projeto usando o Git. Abra o terminal e execute:
 
 ```bash
-git clone https://github.com/seu_usuario/seu_repositorio.git
-cd seu_repositorio
+git clone https://github.com/m1ch3lr4m0s/CRUD_nodeJS.git
+cd CRUD_nodeJS
 ```
 
 Substitua `seu_usuario` e `seu_repositorio` pelos valores corretos.
