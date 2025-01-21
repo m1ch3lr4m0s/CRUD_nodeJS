@@ -1,6 +1,6 @@
   <div class="container">
        <h1>Lista de Contatos</h1>
-       <table>
+       <table class="table">
            <thead>
                <tr>
                    <th>Nome</th>
@@ -10,13 +10,13 @@
            </thead>
            <tbody>
             {{!-- Lê o array de contatos --}}
-               {{#with contatos}}
+               {{#each contatos}}
                    <tr>
                        <td>{{this.nome}}</td>
                        <td>{{this.email}}</td>
                        <td>{{this.telefone}}</td>
                    </tr>
-               {{/with}}
+               {{/each}}
            </tbody>
        </table>
    </div>

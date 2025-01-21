@@ -13,6 +13,7 @@ const exphbs = handlebars.create({
 app.engine("handlebars", exphbs.engine);
 app.set("view engine", "handlebars");
 app.set("views", path.join(__dirname, "views"));
+
 // Configuração do express
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

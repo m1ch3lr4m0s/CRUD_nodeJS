@@ -1,8 +1,8 @@
 const sequelize = require("sequelize");
-const db = new sequelize("crud_nodejs", "postgres", "j4v4n14n0", {
+const db = new sequelize("crud_nodejs", "root", "j4v4n14n0", {
   host: "localhost",
-  dialect: "postgres",
-  port: 5432,
+  dialect: "mysql",
+  port: 3306,
 });
 
  try {
