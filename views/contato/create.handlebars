@@ -1,7 +1,14 @@
+
+<form action="/save" method="post" class="form-control" style="width: 50%; margin: 0 auto;">
 <h1>Adicionar Contato</h1>
-<form action="/save" method="post">
-    <input type="text" name="nome" placeholder="Nome">
-    <input type="email" name="email" placeholder="Email">
-    <input type="text" name="telefone" placeholder="Telefone">
-    <button type="submit">Adicionar</button>
+    <div class="form-group">    
+        <input type="text" name="nome" placeholder="Nome" class="form-control mb-2">
+    </div>
+    <div class="form-group">
+        <input type="email" name="email" placeholder="Email" class="form-control mb-2">
+    </div>
+    <div class="form-group">
+        <input type="text" name="telefone" placeholder="Telefone" class="form-control mb-2">
+    </div>
+    <button type="submit" class="btn btn-primary">Adicionar</button><button type="button" class="btn btn-danger mb-2" onclick="window.location.href='/'">Cancelar</button>
 </form>
