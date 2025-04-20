@@ -25,31 +25,92 @@ O projeto consiste em uma aplicação web que permite aos usuários gerenciar um
   ![Captura de tela 2025-01-20 091616](https://github.com/user-attachments/assets/c7e095f8-a516-48b1-9ea5-6d7968bedc8d)
 
 
-## Como Executar o Projeto
+## Passo 1: Clonar o Repositório
 
-1. Clone o repositório:
-   ```bash
-   git clone https://github.com/m1ch3lr4m0s/CRUD_nodeJS.git
-   ```
+Clone o repositório do seu projeto usando o Git. Abra o terminal e execute:
 
-2. Navegue até o diretório do projeto:
-   ```bash
-   cd CRUD_nodeJS
-   ```
+```bash
+git clone https://github.com/m1ch3lr4m0s/CRUD_nodeJS.git
+cd CRUD_nodeJS
+```
 
-3. Instale as dependências:
-   ```bash
-   npm install
-   ```
+Substitua `seu_usuario` e `seu_repositorio` pelos valores corretos.
 
-4. Configure o banco de dados PostgreSQL e as variáveis de ambiente, se necessário.
+## Passo 2: Instalar Dependências
 
-5. Inicie o servidor:
-   ```bash
-   npm start
-   ```
+Navegue até o diretório do projeto e instale as dependências necessárias usando npm:
 
-6. Acesse a aplicação em seu navegador em `http://localhost:3000`.
+```bash
+npm install
+```
+
+## Passo 3: Configurar o Banco de Dados
+
+### 3.1 Criar o Arquivo `.env`
+
+Na raiz do seu projeto, crie um arquivo chamado `.env` e adicione suas credenciais do banco de dados:
+
+```plaintext
+DB_USER=seu_usuario
+DB_PASSWORD=sua_senha
+DB_HOST=localhost
+DB_NAME=seu_banco_de_dados
+DB_PORT=3306
+```
+
+Substitua `seu_usuario`, `sua_senha`, `localhost`, `seu_banco_de_dados` e `3306` pelos valores corretos.
+
+### 3.2 Criar a Tabela no MariaDB
+
+Conecte-se ao seu banco de dados MariaDB usando o cliente de linha de comando ou uma ferramenta gráfica como o phpMyAdmin. Execute o seguinte comando SQL para criar a tabela `Contatos`:
+
+```sql
+CREATE TABLE Contatos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    telefone VARCHAR(20) NOT NULL,
+    createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+```
+
+## Passo 4: Executar o Projeto
+
+Após configurar o banco de dados e as variáveis de ambiente, você pode iniciar o servidor. Execute o seguinte comando:
+
+```bash
+npm start
+```
+
+O servidor deve iniciar e você verá uma mensagem indicando que está escutando na porta especificada (por padrão, 3000).
+
+## Passo 5: Acessar a Aplicação
+
+Abra o seu navegador e acesse: localhots:3000
+
+Você deve ver a interface da sua aplicação CRUD.
+
+## Passo 6: Testar a Aplicação
+
+Agora você pode testar as funcionalidades da sua aplicação, como adicionar, editar e excluir contatos.
+
+## Estrutura de Arquivos Importantes
+
+- **`data/conn.js`**: Configuração da conexão com o banco de dados.
+- **`.gitignore`**: Arquivo que especifica quais arquivos ou pastas devem ser ignorados pelo Git.
+- **`.env`**: Contém as variáveis de ambiente, como credenciais do banco de dados.
+- **`views/contato/update.handlebars`**: Template para atualizar contatos.
+- **`views/contato/create.handlebars`**: Template para criar novos contatos.
+- **`views/home.handlebars`**: Template para a página inicial.
+- **`index.js`**: Arquivo principal que inicializa o servidor.
+- **`views/layouts/main.handlebars`**: Layout principal da aplicação.
+- **`controllers/ContatoController.js`**: Controlador que gerencia a lógica de negócios para contatos.
+- **`routes/contatoRouter.js`**: Define as rotas relacionadas a contatos.
+
+## Conclusão
+
+Seguindo este guia, você deve ser capaz de instalar e configurar seu projeto CRUD em Node.js com MariaDB. Se você encontrar algum problema ou tiver dúvidas, sinta-se à vontade para perguntar!
 
 ## Contribuições
 
