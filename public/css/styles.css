@@ -1,0 +1,11 @@
+.icon-small{
+    width: 50px;
+    height: 50px;
+
+    transition: 0.5s;
+}
+.icon-small:hover{
+   cursor: pointer;
+
+   transform: scale(1.5);
+}
