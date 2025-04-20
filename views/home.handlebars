@@ -1,9 +1,9 @@
 
    
-    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
         <div class="container-fluid">
              <h1 class="navbar-brand text-white">Lista de Contatos</h1>
-             <a href="/create"><img src="/imgs/userAdd.png" alt="" class="img icon-small"></a>
+             <a href="/create"><img src="/imgs/userAdd.png" alt="" class="img-fluid icon-small"></a>
         </div>
     </nav>
     <div class="table-responsive" style="height: 500px; overflow-y: auto;">
@@ -23,8 +23,8 @@
                         <td>{{this.email}}</td>
                         <td>{{this.telefone}}</td>
                         <td>
-                            <a href="/edit/{{this.id}}"><img src="/imgs/userUpdate.png" alt="" class="img icon-small"></a>
-                            <a href="/delete/{{this.id}}"><img src="/imgs/userDelete.png" alt="" class="img icon-small"></a>
+                            <a href="/edit/{{this.id}}"><img src="/imgs/userUpdate.png" alt="" class="img-fluid icon-small"></a>
+                            <a href="/delete/{{this.id}}"><img src="/imgs/userDelete.png" alt="" class="img-fluid icon-small"></a>
                         </td>
                     </tr>
                 {{/each}}

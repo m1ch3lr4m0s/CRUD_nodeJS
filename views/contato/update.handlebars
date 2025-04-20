@@ -1,81 +1,9 @@
-<style>
-    /* public/styles.css */
-
-/* Estilo geral do corpo */
-body {
-    background-color: #f8f9fa; /* Cor de fundo suave */
-    font-family: Arial, sans-serif; /* Fonte padrão */
-}
-
-/* Estilo do contêiner do formulário */
-.container {
-    max-width: 600px; /* Largura máxima do contêiner */
-    margin: 0 auto; /* Centraliza o contêiner */
-    padding: 20px; /* Espaçamento interno */
-    background-color: #ffffff; /* Cor de fundo do formulário */
-    border-radius: 8px; /* Bordas arredondadas */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
-}
-
-/* Estilo dos títulos */
-h1 {
-    text-align: center; /* Centraliza o título */
-    color: #343a40; /* Cor do texto */
-}
-
-/* Estilo dos grupos de formulário */
-.form-group {
-    margin-bottom: 15px; /* Espaçamento entre os grupos */
-}
-
-/* Estilo dos inputs */
-input[type="text"],
-input[type="email"] {
-    width: 100%; /* Largura total */
-    padding: 10px; /* Espaçamento interno */
-    border: 1px solid #ced4da; /* Borda padrão */
-    border-radius: 4px; /* Bordas arredondadas */
-    transition: border-color 0.3s; /* Transição suave para a borda */
-}
-
-/* Estilo dos inputs ao focar */
-input[type="text"]:focus,
-input[type="email"]:focus {
-    border-color: #007bff; /* Cor da borda ao focar */
-    outline: none; /* Remove o contorno padrão */
-}
-
-/* Estilo dos botões */
-.btn {
-    width: 100%; /* Largura total */
-    padding: 10px; /* Espaçamento interno */
-    border-radius: 4px; /* Bordas arredondadas */
-}
-
-/* Estilo do botão primário */
-.btn-primary {
-    background-color: #007bff; /* Cor de fundo do botão primário */
-    border: none; /* Remove a borda padrão */
-    color: white; /* Cor do texto */
-}
-
-/* Estilo do botão de cancelar */
-.btn-danger {
-    background-color: #dc3545; /* Cor de fundo do botão de cancelar */
-    border: none; /* Remove a borda padrão */
-    color: white; /* Cor do texto */
-}
-
-/* Responsividade */
-@media (max-width: 768px) {
-    .container {
-        padding: 15px; /* Reduz o espaçamento interno em telas menores */
-    }
-}
-</style>
-        <h1>Atualizar Contato</h1>
+<div class="col-md-12 ">
+    
+        
         {{#with contato}}
-        <form action="/updateSave/{{id}}" method="post" class="form-control" style="width: 50%; margin: 0 auto;">
+        <form action="/updateSave/{{id}}" method="post" class="form-control p-5 d-flex flex-column justify-content-center align-items-center">
+            <h2>Atualizar Contato</h2>
             <div class="form-group">
                 <input type="text" name="nome" placeholder="Nome" value="{{nome}}" class="form-control mb-2">
             </div>
@@ -85,14 +13,9 @@ input[type="email"]:focus {
             <div class="form-group">
                 <input type="text" name="telefone" placeholder="Telefone" value="{{telefone}}" class="form-control mb-2">
             </div>
-            <button type="submit" class="btn btn-primary mb-2">Atualizar</button><button type="button" class="btn btn-danger mb-2" onclick="window.location.href='/'">Cancelar</button>
+            <div class="form-group d-flex gap-2">
+                <button type="submit" class="btn btn-primary mb-2">Atualizar</button><button type="button" class="btn btn-danger mb-2" onclick="window.location.href='/'">Cancelar</button>
+            </div>
         </form>
         {{/with}}
-
-        
-
-
-
-
-
-
+</div>
