@@ -1,37 +1,54 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 py-3 shadow-sm">
+  <div class="container-fluid d-flex justify-content-between align-items-center">
+    <h1 class="navbar-brand mb-0">📇 Lista de Contatos</h1>
+    
+    <form class="d-flex align-items-center" action="/search" method="get">
+      <input 
+        class="form-control me-2" 
+        type="search" 
+        name="q" 
+        placeholder="Buscar por nome, email ou telefone..." 
+        aria-label="Buscar contato"
+      >
+      <button class="btn btn-success" type="submit">
+        Buscar
+      </button>
+    </form>
 
-   
-<nav class="navbar navbar-expand-lg navbar-light bg-dark">
-        <div class="container-fluid">
-             <h1 class="navbar-brand text-white">Lista de Contatos</h1>
-             <form class="d-flex" action="/search" method="get">
-                 <input class="form-control me-2" type="search" name="q" placeholder="Search" aria-label="Search">
-                 <button class="btn btn-outline-success" type="submit">Search</button>
-             </form>
-             <a href="/create"><img src="/imgs/userAdd.png" alt="" class="img-fluid icon-small"></a>
-        </div>
-    </nav>
-    <div class="table-responsive" style="height: 500px; overflow-y: auto;">
-        <table class="table table-striped table-hover table-bordered table-sm">
-            <thead>
-                <tr>
-                    <th>Nome</th>
-                    <th>Email</th>
-                    <th>Telefone</th>
-                </tr>
-            </thead>
-            <tbody>
-                {{!-- Lê o array de contatos --}}
-                {{#each contatos}}
-                    <tr>
-                        <td>{{this.nome}}</td>
-                        <td>{{this.email}}</td>
-                        <td>{{this.telefone}}</td>
-                        <td>
-                            <a href="/edit/{{this.id}}"><img src="/imgs/userUpdate.png" alt="" class="img-fluid icon-small"></a>
-                            <a href="/delete/{{this.id}}"><img src="/imgs/userDelete.png" alt="" class="img-fluid icon-small"></a>
-                        </td>
-                    </tr>
-                {{/each}}
-            </tbody>
-        </table>
-    </div>
+    <a href="/create" title="Adicionar contato">
+      <img src="/imgs/userAdd.png" alt="Adicionar contato" class="img-fluid icon">
+    </a>
+  </div>
+</nav>
+
+<div class="container mt-4">
+  <div class="table-responsive rounded shadow-sm border" style="max-height: 500px; overflow-y: auto;">
+    <table class="table table-striped table-hover align-middle mb-0">
+      <thead class="table-dark sticky-top">
+        <tr>
+          <th scope="col">Nome</th>
+          <th scope="col">Email</th>
+          <th scope="col">Telefone</th>
+          <th scope="col" class="text-center">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each contatos}}
+          <tr>
+            <td>{{this.nome}}</td>
+            <td>{{this.email}}</td>
+            <td>{{this.telefone}}</td>
+            <td class="text-center">
+              <a href="/edit/{{this.id}}" class="me-2" title="Editar">
+                <img src="/imgs/userUpdate.png" alt="Editar contato" class="img-fluid icon" style="width: 24px;">
+              </a>
+              <a href="/delete/{{this.id}}" title="Excluir" onclick="return confirm('Tem certeza que deseja excluir este contato?')">
+                <img src="/imgs/userDelete.png" alt="Excluir contato" class="img-fluid icon" style="width: 24px;">
+              </a>
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</div>
