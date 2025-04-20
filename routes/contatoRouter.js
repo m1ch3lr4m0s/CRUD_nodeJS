@@ -8,5 +8,6 @@ router.get("/create", ContatoController.createContato);
 router.get("/edit/:id", ContatoController.editContato);
 router.post("/updateSave/:id", ContatoController.updateContato);
 router.get("/delete/:id", ContatoController.deleteContato);
+router.get("/search", ContatoController.search);
 
 module.exports = router;

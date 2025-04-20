@@ -1,3 +1,4 @@
+const { Op } = require("sequelize");
 const Contato = require("../models/Contato");
 
 module.exports = class ContatoController{
@@ -48,19 +49,19 @@ module.exports = class ContatoController{
     }
     // busca um contato por nome
     static async searchByName(req, res){
-        const nome = req.params.nome;
+        const nome = req.params.nome.toUpperCase();
         const contato = await Contato.findAll({where: {nome: nome}});
         res.render("search", {contato});
     }
     // busca um contato por email
     static async searchByEmail(req, res){
-        const email = req.params.email;
+        const email = req.params.email.toUpperCase();
         const contato = await Contato.findAll({where: {email: email}});
         res.render("search", {contato});
     }
     // busca um contato por telefone
     static async searchByTelefone(req, res){
-        const telefone = req.params.telefone;
+        const telefone = req.params.telefone.toUpperCase();
         const contato = await Contato.findAll({where: {telefone: telefone}});
         res.render("search", {contato});
     }
@@ -70,5 +71,37 @@ module.exports = class ContatoController{
         const contato = await Contato.findByPk(id);
         res.render("search", {contato});
     }
-
+    // busca um contato por nome, email ou telefone
+    static async search(req, res){
+        const searchTerm = req.query.q ? req.query.q.toUpperCase() : null;
+        let contato;
+    
+        if (!searchTerm) {
+            // Se o campo de busca estiver vazio, retorna todos os contatos
+            contato = await Contato.findAll({raw: true});
+        } else if (!isNaN(searchTerm)) {
+            // Se for número, procura pela chave primária
+            contato = await Contato.findByPk(searchTerm);
+        } else {
+            // Se for string, procura por nome, email e telefone
+            contato = await Contato.findAll({
+                where: {
+                    [Op.or]: [
+                        { nome: searchTerm },
+                        { email: searchTerm },
+                        { telefone: searchTerm }
+                    ]
+                },
+                raw: true
+            });
+        }
+    
+        if (!contato || (Array.isArray(contato) && contato.length === 0)) {
+            // Caso não encontre nenhum contato
+            res.render("home", { contatos: [], message: "Nenhum contato encontrado." });
+        } else {
+            // Filtra a tabela para exibir apenas o contato desejado
+            res.render("home", { contatos: Array.isArray(contato) ? contato : [contato] });
+        }
+    }
 }

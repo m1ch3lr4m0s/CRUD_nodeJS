@@ -3,6 +3,10 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-dark">
         <div class="container-fluid">
              <h1 class="navbar-brand text-white">Lista de Contatos</h1>
+             <form class="d-flex" action="/search" method="get">
+                 <input class="form-control me-2" type="search" name="q" placeholder="Search" aria-label="Search">
+                 <button class="btn btn-outline-success" type="submit">Search</button>
+             </form>
              <a href="/create"><img src="/imgs/userAdd.png" alt="" class="img-fluid icon-small"></a>
         </div>
     </nav>

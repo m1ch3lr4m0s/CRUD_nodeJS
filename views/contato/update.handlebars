@@ -2,7 +2,7 @@
     
         
         {{#with contato}}
-        <form action="/updateSave/{{id}}" method="post" class="form-control p-5 d-flex flex-column justify-content-center align-items-center">
+        <form action="/updateSave/{{id}}" method="post" class="form-control p-5 d-flex flex-column justify-content-center align-items-center" onsubmit="return validateForm()">
             <h2>Atualizar Contato</h2>
             <div class="form-group">
                 <input type="text" name="nome" placeholder="Nome" value="{{nome}}" class="form-control mb-2">
@@ -16,6 +16,19 @@
             <div class="form-group d-flex gap-2">
                 <button type="submit" class="btn btn-primary mb-2">Atualizar</button><button type="button" class="btn btn-danger mb-2" onclick="window.location.href='/'">Cancelar</button>
             </div>
+            <script>
+            function validateForm() {
+                const nome = document.forms[0]["nome"].value;
+                const email = document.forms[0]["email"].value;
+                const telefone = document.forms[0]["telefone"].value;
+                if (nome === "" || email === "" || telefone === "") {
+                    alert("Todos os campos devem ser preenchidos.");
+                    return false;
+                }
+                alert("Contato atualizado com sucesso!");
+                return true;
+            }
+            </script>
         </form>
         {{/with}}
 </div>

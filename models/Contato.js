@@ -3,10 +3,16 @@ const db = require("../data/conn");
 
 const Contato = db.define("Contato", {
   nome: {
+    set(value) {
+      this.setDataValue('nome', value.toUpperCase());
+    },
     type: sequelize.STRING,
     allowNull: false,
   },
   email: {
+    set(value) {
+      this.setDataValue('email', value.toUpperCase());
+    },
     type: sequelize.STRING,
     allowNull: false,
     validate: {
@@ -14,6 +20,9 @@ const Contato = db.define("Contato", {
     },
   },
   telefone: {
+    set(value) {
+      this.setDataValue('telefone', value.toUpperCase());
+    },
     type: sequelize.STRING,
     allowNull: false,
     validate: {
