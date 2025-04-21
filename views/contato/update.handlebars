@@ -1,34 +1,45 @@
-<div class="col-md-12 ">
-    
-        
-        {{#with contato}}
-        <form action="/updateSave/{{id}}" method="post" class="form-control p-5 d-flex flex-column justify-content-center align-items-center" onsubmit="return validateForm()">
-            <h2>Atualizar Contato</h2>
-            <div class="form-group">
-                <input type="text" name="nome" placeholder="Nome" value="{{nome}}" class="form-control mb-2">
-            </div>
-            <div class="form-group">
-                <input type="email" name="email" placeholder="Email" value="{{email}}" class="form-control mb-2">
-            </div>
-            <div class="form-group">
-                <input type="text" name="telefone" placeholder="Telefone" value="{{telefone}}" class="form-control mb-2">
-            </div>
-            <div class="form-group d-flex gap-2">
-                <button type="submit" class="btn btn-primary mb-2">Atualizar</button><button type="button" class="btn btn-danger mb-2" onclick="window.location.href='/'">Cancelar</button>
-            </div>
-            <script>
-            function validateForm() {
-                const nome = document.forms[0]["nome"].value;
-                const email = document.forms[0]["email"].value;
-                const telefone = document.forms[0]["telefone"].value;
-                if (nome === "" || email === "" || telefone === "") {
-                    alert("Todos os campos devem ser preenchidos.");
-                    return false;
-                }
-                alert("Contato atualizado com sucesso!");
-                return true;
-            }
-            </script>
-        </form>
-        {{/with}}
+<div class="container my-5">
+  {{#with contato}}
+    <div class="card shadow-lg p-4 mx-auto" style="max-width: 500px;">
+      <h2 class="text-center mb-4">✏️ Atualizar Contato</h2>
+
+      <form action="/update/{{id}}" method="post" onsubmit="return validateUpdateForm()">
+        <div class="mb-3">
+          <label for="nome" class="form-label">Nome</label>
+          <input type="text" id="nome" name="nome" value="{{nome}}" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" id="email" name="email" value="{{email}}" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="telefone" class="form-label">Telefone</label>
+          <input type="text" id="telefone" name="telefone" value="{{telefone}}" class="form-control" required>
+        </div>
+
+        <div class="d-flex justify-content-between mt-4">
+          <button type="submit" class="btn btn-warning px-4 text-white">Salvar Alterações</button>
+          <button type="button" class="btn btn-outline-secondary" onclick="window.location.href='/'">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  {{/with}}
 </div>
+
+<script>
+  function validateUpdateForm() {
+    const nome = document.getElementById("nome").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const telefone = document.getElementById("telefone").value.trim();
+
+    if (!nome || !email || !telefone) {
+      alert("Todos os campos devem ser preenchidos.");
+      return false;
+    }
+
+    alert("Contato atualizado com sucesso!");
+    return true;
+  }
+</script>

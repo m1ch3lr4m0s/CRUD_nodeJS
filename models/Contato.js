@@ -13,6 +13,10 @@ const Contato = db.define("Contato", {
     set(value) {
       this.setDataValue('email', value.toUpperCase());
     },
+    get() {
+      const rawEmail = this.getDataValue('email');
+      return rawEmail ? rawEmail.toLowerCase() : null;
+    },
     type: sequelize.STRING,
     allowNull: false,
     validate: {
